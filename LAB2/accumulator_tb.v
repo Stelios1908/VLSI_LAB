@@ -91,7 +91,7 @@ enable=0;
     $fwrite(file,"\nto anamenomeno  atroisma  einai : %0d",mysum);
     $fwrite(file,"\nto anamenomeno  atroisma  einai : %0d",mysum);
     
-    if(mysum != sum) error=error+1;
+    if(mysum !== sum) error=error+1;
     
   end //end for
        
