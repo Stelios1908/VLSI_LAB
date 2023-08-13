@@ -1,14 +1,14 @@
 module accumulator_tb();
 parameter m=4;
-parameter n=10;
-parameter k=9;
+parameter n=4;
+parameter k=4;
 
 localparam period=10;
 localparam width = m+n;
 localparam width_sum=width+$clog2(k);
 
 integer i,j,f,l,t;
-integer num_of_test=30;
+integer num_of_test=300;
 integer error=0;
 
 reg clk,rstn,pl,enable;
@@ -46,18 +46,21 @@ function [k*width-1:0] produceDin(input a);
  pl=0;
  rstn=0;
  din=0;
- enable=1;
+enable=0;
 
  #(period*0.3)
  rstn=1;
  #(period*0.7); 
- for(t=0;t<num_of_test;t=t+1) begin
- mysum=0;
+ #(period*k+1); 
  
- //edo ftiaxnoyme to din alla gia na to fortosoyme stoys kataxorites 
- //prepei na allaxei seira mesa sto array diladi an:
- //din = [1111,0000,1111] tote new_din =[101,101,101,101] kai
- //sto kataxoriti i tha fortothoyn  ola ta i-osta psifia ton k arithmon
+  for(t=0;t<num_of_test;t=t+1) begin
+   mysum={(width+$clog2(k)){1'b0}};
+
+   //edo ftiaxnoyme to din alla gia na to fortosoyme stoys kataxorites 
+   //prepei na allaxei seira mesa sto array diladi an:
+   //din = [1111,0000,1111] tote new_din =[101,101,101,101] kai
+   //sto kataxoriti i tha fortothoyn  ola ta i-osta psifia ton k arithmon
+ 
     din = produceDin(0);//18'b001001000001100100;//
     //$display("before calibration : %0b",din);
     for(i=0;i<k;i=i+1) begin
@@ -77,6 +80,7 @@ function [k*width-1:0] produceDin(input a);
     pl=1;
     #(period*2)
     pl=0;
+    enable=1;
     while(ready !=1)  #(period);
       
     $display("===========================================");
@@ -86,8 +90,10 @@ function [k*width-1:0] produceDin(input a);
     $fwrite(file,"\n===========================================");
     $fwrite(file,"\nto anamenomeno  atroisma  einai : %0d",mysum);
     $fwrite(file,"\nto anamenomeno  atroisma  einai : %0d",mysum);
+    
     if(mysum != sum) error=error+1;
-    end
+    
+  end //end for
        
     $display("to test egine me  %0d error",error);
     $finish;
