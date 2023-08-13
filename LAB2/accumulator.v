@@ -37,7 +37,7 @@ generate
             .clk(clk),
             .rst(rstn),
             .enable(enable),
-            .pl(pl),
+		    .pl(load),
             .pi(din[(gi+1)*k-k+:k]),
             .si(1'b0),
             .so(out_of_reg[gi])    
