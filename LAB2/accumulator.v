@@ -51,7 +51,7 @@ endgenerate
 
  always @(posedge clk or negedge rstn) begin
       if(!rstn) begin 
-        reg_cnt <= k+1;
+        reg_cnt <= 0;
       end
       else  begin
         if(load) reg_cnt <= k+1;
