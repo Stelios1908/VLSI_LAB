@@ -6,8 +6,8 @@ module accumulator #(
 )(
     input  clk,rstn,pl,enable,
     input  [width*k-1:0] din,
-    output  ready,
-    output [width_sum-1:0]sum
+    output reg ready,
+    output wire [width_sum-1:0]sum
 );
 
 integer i,j;
@@ -16,9 +16,7 @@ localparam width_sum=width+$clog2(k);
 
 reg [width_sum-1:0]reg_sum;
 reg [$clog2(k):0]reg_cnt;
-reg okToLoad,ready;
 wire [width-1:0]out_of_reg;
-wire [width_sum-1:0]sum;
 wire end_cnt;
 wire load;
 
