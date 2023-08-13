@@ -38,7 +38,7 @@ generate
             .rst(rstn),
             .enable(enable),
 		    .pl(load),
-            .pi(din[(gi+1)*k-k+:k]),
+            .pi(din[(gi*k+:k]),
             .si(1'b0),
             .so(out_of_reg[gi])    
       );
