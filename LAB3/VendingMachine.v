@@ -5,7 +5,7 @@ module VendingMachine(
 );
 
 wire coffee;
-reg message;
+//reg message;
 reg [1:0]state;
 reg [1:0]nextstate;
 //Morre
@@ -19,7 +19,7 @@ always @(posedge clk or negedge rst) begin
     if(!rst) begin
          state <= S1; 
          nextstate <=S1;
-         message <= 0;
+       //  message <= 0;
     end
     else state <=nextstate;
 end
@@ -36,7 +36,7 @@ always @(state or c5 or c10 or water or beans) begin
       default: 
           begin
            nextstate = S1;
-           message = 1;
+          // message = 1;
           end
     endcase
 end
