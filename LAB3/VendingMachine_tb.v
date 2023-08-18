@@ -27,9 +27,9 @@ VendingMachine DUT(
  always #(period*0.5) clk=~clk; 
 
  always @(*)begin if(coffee) water = water-1; cnt_coffee=cnt_coffee+1; end
- //always @(*)begin if(cnt_coffee==1) beans=0; end
- always @(posedge clk) begin
-//every time  one of c5,c10,NFC becames 1 after period*0.30 will becames  0
+
+ //every time  one of c5,c10,NFC becames 1 after period*0.30 will becames  0
+  always @(posedge clk) begin
         #(period*0.30)
         c5=0;
         c10=0;
@@ -106,6 +106,7 @@ end
         #(period*6);
          if(DUT.state!=2'b01 & error & water!=fullWater) 
            errors=errors+1;
+      
         //pame gia  kafe me ena NFC
         $display("===============================================================================");
         $display("=====================   N F C   ===============================================");
@@ -116,6 +117,7 @@ end
         #(period*6);
         if(DUT.state!=2'b01 & error & water!=fullWater) 
            errors=errors+1;
+      
         //pame gia  kafe me c5 kai meta  ena NFC
         $display("===============================================================================");
         $display("===================== C5 AND NFC ==============================================");
@@ -129,6 +131,7 @@ end
         if(DUT.state!=2'b11 & error & water!=fullWater) 
             errors=errors+1;
         #(period*6);
+      
          //pame gia  kafe me c5 kai meta c10
         $display("===============================================================================");
         $display("===================== C5 AND C10 ==============================================");
@@ -144,17 +147,18 @@ end
         #(period*6);
         if(DUT.state!=2'b01 & error & water!=fullWater) 
            errors=errors+1;
+      
         if(i==3) begin  water=fullWater; end
         if(i==4) begin beans=0;   end
         else     begin beans=1;   end
     end  //end for
     
-    #10;
-     $display("===================END SEMULATION========================");
-    if(errors==0)
-       $display(" SUCCESS ERRORS : %0d",errors);
-    else
-       $display("NO SUCCESS ERRORS : %0d",errors);
+#10;
+$display("===================END SEMULATION========================");
+if(errors==0)
+ $display(" SUCCESS ERRORS : %0d",errors);
+else
+  $display("NO SUCCESS ERRORS : %0d",errors);
 $finish;
     
 end
