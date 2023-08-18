@@ -159,6 +159,7 @@ if(errors==0)
  $display(" SUCCESS ERRORS : %0d",errors);
 else
   $display("NO SUCCESS ERRORS : %0d",errors);
+$display("=========================================================");
 $finish;
     
 end
