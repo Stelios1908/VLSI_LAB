@@ -45,7 +45,7 @@ module dlock (
 //for next state
 always @(posedge clk or negedge rstn) begin
   if(!rstn) begin
-     state <= LOCK;
+     next_state<= LOCK;
      count <=0;
      Error<=0;
   end
@@ -66,7 +66,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
       CODING: begin
                     //if the system is locked and  that means we are going  to unlock
                     //and not to change the password 
-                    if(stateLockOrUnlock==1) begin 
+                    if(stateLockOrUnlock==1 ) begin 
                        if(count !=0) begin
                            if(current_key !== 4'bz)  
                                 next_state = ERROR;
@@ -98,7 +98,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                        end
                      end   //END stateLockOrUnlock==1
 
-                     if(stateLockOrUnlock==0) begin
+                     if(stateLockOrUnlock==0 && !Error ) begin
                        if(sw1 && !sw3) begin
                            next_state = LOCK_UNLOCK;
                        end
@@ -120,6 +120,8 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                               if(insert_pass[11:00]===passToGoChangeMode[11:0]) begin
                                  count=0;
                                  next_state  = CHANGE_PASS;
+                                 current_key=4'bzzzz;
+                                 insert_pass=16'bx;
                               end
                               else  begin
                                  next_state  = UNLOCK;
@@ -129,32 +131,87 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                                next_state = UNLOCK;
                            end
                         end
-                    end//END stateLockOrUnlock==0
+                    end//END stateLockOrUnlock==0 && NOT ERROR
+                    
+                    if(stateLockOrUnlock==0 && Error ) begin
+                         if(count !=0) begin
+                           if(current_key !== 4'bz)  
+                                next_state = ERROR;
+                           else if(current_key === 4'bz) 
+                                current_key=sw16;
+                       end
+                       if(sw2 || count==0 ) begin  
+                           if(current_key!==4'bz) begin
+                              insert_pass[(count*4)+:4]=current_key;
+                              current_key=4'bz;
+                              count=count+1;
+                          end
+                       end
+                      if(count==4) begin
+                           if(insert_pass===passToExitFromError) begin
+                               next_state = UNLOCK;
+                               Error=0;
+                               current_key=4'bz;
+                               insert_pass=16'bx;
+                           end
+                           else  begin
+                              next_state = ERROR;
+                              insert_pass=16'bx;
+                           end
+                       end
+                     end//END stateLockOrUnlock==0 &&  ERROR
+
                  end
     
       CHANGE_PASS:begin
-                      if(sw2)   begin
-                         current_key=sw16;
-                         if( current_key == 4'b0001 ||
-                             current_key == 4'b0001 ||
-                             current_key == 4'b0001 ||
-                             current_key == 4'b0001 ) begin
-                             next_state = Error;
-                         end
-                         else  if(current_key == 4'bzzzz) begin
-                             insert_pass[count+:4]=current_key;
-                             current_key=4'bzzzz;
-                             count = count +1;
-                          end
-                         else if(current_key !==4'bzzzz ) begin
-                              next_state = Error;
-                         end
-                      end
+                       if(sw2 && count==0) begin  
+                              current_key=sw16;
+                              if(current_key == 4'b0001 ||
+                                 current_key == 4'b0010 ||
+                                 current_key == 4'b0100 ||
+                                 current_key == 4'b0101 ||
+                                 current_key == 4'b0110 ||
+                                 current_key == 4'b1111 ) begin
+                                     next_state = ERROR;
+                                     insert_pass=16'bx;
+                              end
+                              else begin
+                                 insert_pass[(count*4)+:4]=current_key;
+                                 current_key=4'bz;
+                                 count=count+1;
+                              end
+                       end
+                       else if(sw2) begin
+                          if(current_key !== 4'bz)  
+                              next_state = ERROR;
+                          else  if(current_key === 4'bz) begin
+                              current_key=sw16;
+                              if(current_key == 4'b0001 ||
+                                 current_key == 4'b0010 ||
+                                 current_key == 4'b0100 ||
+                                 current_key == 4'b0101 ||
+                                 current_key == 4'b0110 ||
+                                 current_key == 4'b1111 ) begin
+                                     next_state = ERROR;
+                                     insert_pass=16'bx;
+                                     
+                              end
+                              else begin
+                               insert_pass[(count*4)+:4]=current_key;
+                               current_key=4'bz;
+                               count=count+1;
+                               end
+                           end
+                       end
+                       
                       if(count ==4) begin
                            password = insert_pass;
-                      end
-                  end
-      
+                           next_state = UNLOCK;
+                           count=0;
+                           insert_pass=16'bz;
+                      end 
+                end
+       
     
       LOCK_UNLOCK:begin
                      
@@ -169,7 +226,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                   if(!sw3 & sw1)  begin
                       next_state = LOCK_UNLOCK;
                   end
-                  else if(sw16 !==4'bzzzz) begin
+                  else if(sw16 !==4'bz && !sw2) begin
                       current_key=sw16;
                       next_state = CODING;
                       count =0;
@@ -184,7 +241,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                         count =0;
                    end
             end
-      default: next_state = LOCK;
+      default: next_state = UNLOCK;
   endcase
 
 end
