@@ -70,8 +70,7 @@ initial begin
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
  
-  #(period*1);
-  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+
  
  
  /////////////////////////////////////////////////////////////////////////////////////
@@ -109,8 +108,7 @@ initial begin
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
  
-  #(period*1);
-  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+
  
  
   /////////////////////////////////////////////////////////////////////////////////////
@@ -211,7 +209,7 @@ initial begin
  ////////////////////////////////////////////////////////////////////////////////////
  //NOW I AM CHANGE_PASS STATE AND I TRYING CHANGE PASSWORD  BUT THE LAST DIGIT IS LETTER
  //AND I HAVE ERROR
- $display("====================CHANGE PASSWORD ======================================");
+ $display("============CHANGE PASSWORD LAST DIGIT LETTER===========================");
   sw16 = 4'b1011;//1
   sw2 = 1 ; 
   #0;
@@ -286,11 +284,40 @@ initial begin
 
   #(period);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+
+  /////////////////////////////////////////////////////////////////////////////////////
+ //NOW I AM TRYING TO GO CHANGE_PASS STATE  WITH (# * # ENDER )
+  $display("==I AM TO UNLOCK STATE AND I TRY TO GO CHANGE_PASS STATE WITH (# * # ENDER )===");
+  sw16 = 4'b1111;//#
+  #0;
+  #(period);
+  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+  
+  sw16 = 4'b0001;//*
+  #0;
+  #(period*2);
+  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+
+
+  sw16 = 4'b1111;//#
+  #0;
+  #(period*2);
+  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+
+  
+  sw2 = 1 ; 
+  #0;
+  #(period*0.3);
+  sw2 = 0 ; 
+  #(period*0.7);
+  $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+ 
+
  ////////////////////////////////////////////////////////////////////////////////////
  //NOW I AM CHANGE_PASS STATE AND I TRYING CHANGE PASSWORD .
  //VALID PASSWORD
- /*
- $display("====================CHANGE PASSWORD ======================================");
+ 
+ $display("====================CHANGE PASSWORD ( 1 1 2 2)==========================");
   sw16 = 4'b1011;//1
   sw2 = 1 ; 
   #0;
@@ -326,13 +353,13 @@ initial begin
  
   #(period*1);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
- */
- 
+
+ /*
  for(i=0;i<9;i=i+1) begin
      #(period*1);
-     $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+     $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.password);
 
- end
+ end */
  $finish;
  end
 endmodule
