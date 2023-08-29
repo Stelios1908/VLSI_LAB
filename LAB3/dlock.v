@@ -23,15 +23,19 @@ module dlock (
  //this is the ABBC to get me out of the error state.
  reg [15:0]passToExitFromError = 16'b0010011001100010;
  //this is the #*# to tranfert me at the change password mode
- reg [11:0]passToGoChangeMode= 16'b0000111100011111;
+ reg [11:0]passToGoChangeMode= 12'b111100011111;
 
  lockcomp #(.size(16),.factory_pass(0011001100110011/*9999*/)) lockcmp (
-        .rst(rstn),
+        .rstn(rstn),
         .prs(prs),
-        .incode(/*(stateLockOrUnlock==1)?password:
-                (!stateLockOrUnlock & state!=CHANGE_PASS)?passToGoChangeMode:
-                (state!=ERROR)?passToExitFromError:
-                16'b0000000000000000*/ password),
+        .incode((stateLockOrUnlock==1 && !prs)?insert_pass:
+                (stateLockOrUnlock==0 && !prs && !Error)?{4'b1111,insert_pass[11:0]}:
+                (stateLockOrUnlock==0 && !prs &&  Error)?insert_pass:
+                (stateLockOrUnlock==1 && prs && !Error)?password:
+                (stateLockOrUnlock==1 && prs &&  Error )?passToExitFromError:
+                (stateLockOrUnlock==0 && prs && !Error )?{4'b1111,passToGoChangeMode}:
+                (stateLockOrUnlock==0 && prs &&  Error )?passToExitFromError:
+                16'b0000000000000000),
         .equal(equal)
    ) ;
  parameter  [2:0] LOCK=3'b000,
@@ -48,12 +52,13 @@ always @(posedge clk or negedge rstn) begin
      next_state<= LOCK;
      count <=0;
      Error<=0;
+     password<=16'b0011001100110011;
   end
   else 
     state <= next_state;
 end
 
-always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
+always @(state , sw16,posedge sw1,posedge sw2,posedge sw3,negedge sw3)begin
   case(state)
         LOCK: begin
                     if(sw2) begin
@@ -81,14 +86,22 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                           end
                        end
                       if(count==4 && !Error) begin
-                           if(insert_pass===password)
+                           prs=1;
+                           #1;
+                           prs=0;
+                           #1;
+                           if(equal/*insert_pass===password*/)
                               next_state = LOCK_UNLOCK;
                            else  
                               next_state = ERROR;
                            insert_pass=16'bx;
                        end
                        if(count==4 && Error) begin
-                           if(insert_pass===passToExitFromError) begin
+                           prs=1;
+                           #1;
+                           prs=0;
+                           #1;
+                           if(equal/*insert_pass===passToExitFromError*/) begin
                               next_state = LOCK;
                               Error=0;
                            end
@@ -117,18 +130,29 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                         end
                       else if(count ==3) begin
                            if(sw2) begin  
-                              if(insert_pass[11:00]===passToGoChangeMode[11:0]) begin
+                              prs=1;
+                              #1;
+                              prs=0;
+                              #1;
+                           if(equal/*insert_pass[11:0]==passToGoChangeMode[11:0]*/) begin
                                  count=0;
                                  next_state  = CHANGE_PASS;
                                  current_key=4'bzzzz;
-                                 insert_pass=16'bx;
+                                 insert_pass=16'bx; 
                               end
                               else  begin
+                                 count=0;
                                  next_state  = UNLOCK;
+                                 current_key=4'bzzzz;
+                                 insert_pass=16'bx;
                               end
                            end
                             else if(sw16 !== 4'bzzzz) begin
-                               next_state = UNLOCK;
+                                 count=0;
+                                 next_state  = UNLOCK;
+                                 current_key=4'bzzzz;
+                                 insert_pass=16'bx;
+                                 next_state = UNLOCK;
                            end
                         end
                     end//END stateLockOrUnlock==0 && NOT ERROR
@@ -148,7 +172,11 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                           end
                        end
                       if(count==4) begin
-                           if(insert_pass===passToExitFromError) begin
+                           prs=1;
+                           #1;
+                           prs=0;
+                           #1;
+                           if(equal/*insert_pass===passToExitFromError*/) begin
                                next_state = UNLOCK;
                                Error=0;
                                current_key=4'bz;
@@ -208,7 +236,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                            password = insert_pass;
                            next_state = UNLOCK;
                            count=0;
-                           insert_pass=16'bz;
+                           insert_pass=16'bx;
                       end 
                 end
        
@@ -223,7 +251,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                      stateLockOrUnlock= ~stateLockOrUnlock;
                   end
       UNLOCK:begin 
-                  if(!sw3 & sw1)  begin
+                  if(!sw3 && sw1)  begin
                       next_state = LOCK_UNLOCK;
                   end
                   else if(sw16 !==4'bz && !sw2) begin
@@ -241,7 +269,7 @@ always @(state , sw16,posedge sw1,posedge sw2,posedge sw3)begin
                         count =0;
                    end
             end
-      default: next_state = UNLOCK;
+      default: next_state = LOCK;
   endcase
 
 end
