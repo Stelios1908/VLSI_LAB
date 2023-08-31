@@ -1,6 +1,7 @@
 module dloc_tb();
 
 integer i;
+reg err=0;
 localparam period = 8;
 localparam size=16;
 
@@ -38,6 +39,7 @@ initial begin
   #(period);
   $display("========================AFTER RESET===================================");
   $display("state : %b | error : %b | lock : %b | PASSWORD : %b ",DUT.state,error,lock,DUT.password);
+  if(DUT.password != 16'b0011001100110011) err = err +1;
   #(period);
   /////////////////////////////////////////////////////////////////////////////////////
   // TRY UNLOCK WITH FALSE CODE (START)
@@ -73,7 +75,7 @@ initial begin
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
   #(period);
-
+  if(DUT.state!= 3'b110 || error !=1 || lock !=0) err = err +1;
  
  
  /////////////////////////////////////////////////////////////////////////////////////
@@ -113,7 +115,7 @@ initial begin
   #(period);
 
  
- 
+  if(DUT.state!= 3'b000 || error !=0 || lock !=0) err = err +1;
   /////////////////////////////////////////////////////////////////////////////////////
   // TRY TO UNLOCK WITH RIGTH CODE 
   $display("=================TRY TO UNLOCK WITH RIGTH CODER========================");
@@ -149,10 +151,12 @@ initial begin
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
  
+ if(DUT.state!= 3'b100 || error !=0 || lock !=1) err = err +1;
   #(period*1);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+ if(DUT.state!= 3'b101 || error !=0 || lock !=0) err = err +1;
   #(period);
-
+ 
 /////////////////////////////////////////////////////////////////////////////////////
 //NOW I AM TRYING TO GO CHANGE_PASS STATE WITH (# * !# ENDER ) AND I WILL NOT GO TO CHANGE_PASS STATE
 //BUT I STAY TO THE SAME STATE  
@@ -181,8 +185,9 @@ initial begin
   sw2 = 0 ; 
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+  if(DUT.state!= 3'b101 || error !=0 || lock !=0) err = err +1;
   #(period);
-
+ 
  /////////////////////////////////////////////////////////////////////////////////////
  //NOW I AM TRYING TO GO CHANGE_PASS STATE  WITH (# * # ENDER )
   $display("==I AM TO UNLOCK STATE AND I TRY TO GO CHANGE_PASS STATE WITH (# * # ENDER )===");
@@ -209,6 +214,7 @@ initial begin
   sw2 = 0 ; 
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+  if(DUT.state!= 3'b010 || error !=0 || lock !=0) err = err +1;
   #(period);
 
  ////////////////////////////////////////////////////////////////////////////////////
@@ -246,6 +252,7 @@ initial begin
   #(period*0.3);
   sw2 = 0 ; 
   #(period*0.7);
+  if(DUT.state!= 3'b110 || error !=1 || lock !=0) err = err +1;
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
  
   #(period*1);
@@ -286,6 +293,7 @@ initial begin
   sw2 = 0; 
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+  if(DUT.state!= 3'b101 || error !=0 || lock !=0) err = err +1;
   #(period);
 
   /////////////////////////////////////////////////////////////////////////////////////
@@ -314,6 +322,7 @@ initial begin
   sw2 = 0 ; 
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
+  if(DUT.state!= 3'b010 || error !=0 || lock !=0) err = err +1;
   #(period);
 
  ////////////////////////////////////////////////////////////////////////////////////
@@ -353,7 +362,7 @@ initial begin
   sw2 = 0 ; 
   #(period*0.7);
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
- 
+  if(DUT.state!= 3'b101 || error !=0 || lock !=0) err = err +1;
   #(period*1);
   
 
@@ -381,15 +390,16 @@ initial begin
   #(period*0.3);
   sw2 = 0 ; 
   #(period*0.7);
+  if(DUT.state!= 3'b100 || error !=0 || lock !=1) err = err +1;
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
   #(period*0.7);
+  if(DUT.state!= 3'b000 || error !=0 || lock !=0) err = err +1;
   $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.insert_pass);
- 
- for(i=0;i<9;i=i+1) begin
-     #(period*1);
-     $display("state : %b | error : %b | lock : %b | cnt : %b | ck : %b",DUT.state,error,lock,count,DUT.password);
 
- end 
+ if(!err)
+   $display("SUCCESS NO ERRORS !!!! |");
+ else 
+   $display("NO SUCCESS WITH %d ERRORS !!!! |",err);
  $finish;
  end
 endmodule
