@@ -1,4 +1,4 @@
-module rca_tb();
+module rcafresh_tb();
 localparam width = 4;
 localparam period = 4;
 integer i,j,error;
