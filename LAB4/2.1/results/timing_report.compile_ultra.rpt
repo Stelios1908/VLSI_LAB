@@ -1,0 +1,52 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : rca_fresh
+Version: T-2022.03-SP5
+Date   : Tue Sep  5 22:32:39 2023
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+  Startpoint: rega_regb_fas[1].reg_a/Q_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: reg_sum[3].reg_sum/Q_reg
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  rega_regb_fas[1].reg_a/Q_reg/CLK (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00       0.00 r
+  rega_regb_fas[1].reg_a/Q_reg/QN (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                         55.85      55.85 f
+  U22/Y (NAND2xp5_ASAP7_75t_R)                           21.78      77.63 r
+  U24/Y (NAND2x1p5_ASAP7_75t_R)                          13.75      91.38 f
+  U45/Y (AOI31xp67_ASAP7_75t_R)                          14.91     106.29 r
+  U46/Y (XOR2xp5_ASAP7_75t_R)                            22.70     128.98 r
+  reg_sum[3].reg_sum/Q_reg/D (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00     128.98 r
+  data arrival time                                                128.98
+
+  clock clk (rise edge)                                 147.00     147.00
+  clock network delay (ideal)                             0.00     147.00
+  reg_sum[3].reg_sum/Q_reg/CLK (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00     147.00 r
+  library setup time                                    -17.93     129.07
+  data required time                                               129.07
+  --------------------------------------------------------------------------
+  data required time                                               129.07
+  data arrival time                                               -128.98
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.08
+
+
+1

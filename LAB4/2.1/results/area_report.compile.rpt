@@ -1,0 +1,60 @@
+ 
+****************************************
+Report : area
+Design : rca_fresh
+Version: T-2022.03-SP5
+Date   : Tue Sep  5 22:29:29 2023
+****************************************
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+Number of ports:                           87
+Number of nets:                           145
+Number of cells:                           80
+Number of combinational cells:             50
+Number of sequential cells:                13
+Number of macros/black boxes:               0
+Number of buf/inv:                         20
+Number of references:                      18
+
+Combinational area:                 53.187840
+Buf/Inv area:                       14.463360
+Noncombinational area:              78.848639
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                   132.036480
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  -----------
+rca_fresh                          132.0365    100.0    0.6998     0.0000  0.0000  rca_fresh
+reg_sum[0].reg_sum                   7.4650      5.7    1.3997     6.0653  0.0000  myreg_5
+reg_sum[1].reg_sum                   7.4650      5.7    1.3997     6.0653  0.0000  myreg_4
+reg_sum[2].reg_sum                   7.4650      5.7    1.3997     6.0653  0.0000  myreg_3
+reg_sum[3].reg_sum                   7.4650      5.7    1.3997     6.0653  0.0000  myreg_2
+reg_sum[4].reg_sum                   7.4650      5.7    1.3997     6.0653  0.0000  myreg_1
+rega_regb_fas[0].fa                  7.6982      5.8    7.6982     0.0000  0.0000  fulladder_0
+rega_regb_fas[0].reg_a               7.4650      5.7    1.3997     6.0653  0.0000  myreg_0
+rega_regb_fas[0].reg_b               7.4650      5.7    1.3997     6.0653  0.0000  myreg_12
+rega_regb_fas[1].fa                  9.5645      7.2    9.5645     0.0000  0.0000  fulladder_3
+rega_regb_fas[1].reg_a               7.4650      5.7    1.3997     6.0653  0.0000  myreg_11
+rega_regb_fas[1].reg_b               7.4650      5.7    1.3997     6.0653  0.0000  myreg_10
+rega_regb_fas[2].fa                  9.7978      7.4    9.7978     0.0000  0.0000  fulladder_2
+rega_regb_fas[2].reg_a               7.4650      5.7    1.3997     6.0653  0.0000  myreg_9
+rega_regb_fas[2].reg_b               7.4650      5.7    1.3997     6.0653  0.0000  myreg_8
+rega_regb_fas[3].fa                  7.2317      5.5    7.2317     0.0000  0.0000  fulladder_1
+rega_regb_fas[3].reg_a               7.4650      5.7    1.3997     6.0653  0.0000  myreg_7
+rega_regb_fas[3].reg_b               7.4650      5.7    1.3997     6.0653  0.0000  myreg_6
+--------------------------------  ---------  -------  --------  ---------  ------  -----------
+Total                                                  53.1878    78.8486  0.0000
+
+1
