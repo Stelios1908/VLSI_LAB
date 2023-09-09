@@ -1,0 +1,47 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : VendingMachine
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:49:19 2023
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+  Startpoint: state_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: state_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  state_reg[1]/CLK (ASYNC_DFFHx1_ASAP7_75t_R)             0.00       0.00 r
+  state_reg[1]/QN (ASYNC_DFFHx1_ASAP7_75t_R)             56.75      56.75 r
+  U23/Y (INVxp33_ASAP7_75t_R)                            18.05      74.80 f
+  U29/Y (AO32x1_ASAP7_75t_R)                             31.92     106.72 f
+  U21/Y (OAI22xp33_ASAP7_75t_R)                          20.23     126.95 r
+  state_reg[0]/D (ASYNC_DFFHx1_ASAP7_75t_R)               0.00     126.95 r
+  data arrival time                                                126.95
+
+  clock clk (rise edge)                                 185.00     185.00
+  clock network delay (ideal)                             0.00     185.00
+  state_reg[0]/CLK (ASYNC_DFFHx1_ASAP7_75t_R)             0.00     185.00 r
+  library setup time                                    -21.40     163.60
+  data required time                                               163.60
+  --------------------------------------------------------------------------
+  data required time                                               163.60
+  data arrival time                                               -126.95
+  --------------------------------------------------------------------------
+  slack (MET)                                                       36.65
+
+
+1

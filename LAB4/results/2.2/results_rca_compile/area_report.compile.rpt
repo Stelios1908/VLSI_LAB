@@ -1,0 +1,63 @@
+ 
+****************************************
+Report : area
+Design : pipline_rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:42:17 2023
+****************************************
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+Number of ports:                          113
+Number of nets:                           116
+Number of cells:                           56
+Number of combinational cells:             25
+Number of sequential cells:                11
+Number of macros/black boxes:               0
+Number of buf/inv:                         11
+Number of references:                       5
+
+Combinational area:                 34.292160
+Buf/Inv area:                        7.698240
+Noncombinational area:              66.718080
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                   101.010239
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ------------
+pipline_rca                        101.0102    100.0    7.6982    60.6528  0.0000  pipline_rca
+in1                                 12.5971     12.5    0.0000     0.0000  0.0000  rca_width2_0
+in1/reg_sum[0].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_10
+in1/reg_sum[1].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_9
+in1/reg_sum[2].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_8
+in1/regfa[0].fa                      6.2986      6.2    6.2986     0.0000  0.0000  fulladder_0
+in1/regfa[0].reg_a                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_0
+in1/regfa[0].reg_b                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_13
+in1/regfa[1].fa                      6.2986      6.2    6.2986     0.0000  0.0000  fulladder_3
+in1/regfa[1].reg_a                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_12
+in1/regfa[1].reg_b                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_11
+in2                                 20.0621     19.9    0.0000     0.0000  0.0000  rca_width2_1
+in2/reg_sum[0].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_3
+in2/reg_sum[1].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_2
+in2/reg_sum[2].reg_sum               0.0000      0.0    0.0000     0.0000  0.0000  myreg_1
+in2/regfa[0].fa                     13.7635     13.6    7.6982     6.0653  0.0000  fulladder_2
+in2/regfa[0].reg_a                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_7
+in2/regfa[0].reg_b                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_6
+in2/regfa[1].fa                      6.2986      6.2    6.2986     0.0000  0.0000  fulladder_1
+in2/regfa[1].reg_a                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_5
+in2/regfa[1].reg_b                   0.0000      0.0    0.0000     0.0000  0.0000  myreg_4
+--------------------------------  ---------  -------  --------  ---------  ------  ------------
+Total                                                  34.2922    66.7181  0.0000
+
+1

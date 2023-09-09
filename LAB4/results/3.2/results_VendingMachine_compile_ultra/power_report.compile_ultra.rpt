@@ -1,0 +1,35 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : VendingMachine
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:49:19 2023
+****************************************
+
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.7  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ps
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+VendingMachine                         2.41e-03 1.74e-02 1.20e+03 1.98e-02 100.0
+1

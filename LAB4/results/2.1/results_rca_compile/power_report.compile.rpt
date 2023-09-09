@@ -1,0 +1,56 @@
+Loading db file '/usr/local/eda/synLibs/asap7/7nm/db/asap7.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:30:47 2023
+****************************************
+
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.7  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ps
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+rca                                    6.32e-03    0.105 7.01e+03    0.111 100.0
+  reg_sum[4].reg_sum (myreg_1)         8.60e-05 7.52e-03  337.967 7.61e-03   6.8
+  reg_sum[3].reg_sum (myreg_2)         1.27e-04 7.88e-03  321.060 8.01e-03   7.2
+  reg_sum[2].reg_sum (myreg_3)         1.24e-04 7.85e-03  338.736 7.97e-03   7.2
+  reg_sum[1].reg_sum (myreg_4)         1.16e-04 7.79e-03  338.498 7.90e-03   7.1
+  reg_sum[0].reg_sum (myreg_5)         9.47e-05 7.59e-03  338.347 7.69e-03   6.9
+  rega_regb_fas[3].fa (fulladder_1)    6.71e-04 1.12e-03  645.631 1.79e-03   1.6
+  rega_regb_fas[3].reg_b (myreg_6)     2.60e-04 7.84e-03  343.233 8.10e-03   7.3
+  rega_regb_fas[3].reg_a (myreg_7)     2.69e-04 7.86e-03  343.218 8.13e-03   7.3
+  rega_regb_fas[2].fa (fulladder_2)    1.21e-03 7.91e-04  569.268 2.00e-03   1.8
+  rega_regb_fas[2].reg_b (myreg_8)     2.60e-04 7.86e-03  343.199 8.12e-03   7.3
+  rega_regb_fas[2].reg_a (myreg_9)     2.62e-04 7.87e-03  343.197 8.13e-03   7.3
+  rega_regb_fas[1].fa (fulladder_3)    9.73e-04 9.29e-04  755.891 1.90e-03   1.7
+  rega_regb_fas[1].reg_b (myreg_10)    2.58e-04 7.90e-03  343.135 8.16e-03   7.3
+  rega_regb_fas[1].reg_a (myreg_11)    2.59e-04 7.86e-03  343.195 8.12e-03   7.3
+  rega_regb_fas[0].fa (fulladder_0)    9.99e-04 6.19e-04  612.759 1.62e-03   1.5
+  rega_regb_fas[0].reg_b (myreg_12)    1.77e-04 7.86e-03  343.194 8.04e-03   7.2
+  rega_regb_fas[0].reg_a (myreg_0)     1.78e-04 7.85e-03  343.201 8.03e-03   7.2
+1

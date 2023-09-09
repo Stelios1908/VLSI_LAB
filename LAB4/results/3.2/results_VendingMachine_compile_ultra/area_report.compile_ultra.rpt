@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : area
+Design : VendingMachine
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:49:19 2023
+****************************************
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+Number of ports:                           13
+Number of nets:                            26
+Number of cells:                           16
+Number of combinational cells:             14
+Number of sequential cells:                 2
+Number of macros/black boxes:               0
+Number of buf/inv:                          3
+Number of references:                      11
+
+Combinational area:                 14.929920
+Buf/Inv area:                        2.099520
+Noncombinational area:              12.130560
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                    27.060480
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+VendingMachine                      27.0605    100.0   14.9299    12.1306  0.0000  VendingMachine
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                  14.9299    12.1306  0.0000
+
+1

@@ -1,0 +1,83 @@
+ 
+****************************************
+Report : qor
+Design : VendingMachine
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:42:49 2023
+****************************************
+
+
+  Timing Path Group 'clk'
+  -----------------------------------
+  Levels of Logic:               6.00
+  Critical Path Length:        146.03
+  Critical Path Slack:          22.06
+  Critical Path Clk Period:    185.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:                 19
+  Buf/Inv Cell Count:               7
+  Buf Cell Count:                   0
+  Inv Cell Count:                   7
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:        17
+  Sequential Cell Count:            2
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:       17.729280
+  Noncombinational Area:    12.130560
+  Buf/Inv Area:              4.898880
+  Total Buffer Area:             0.00
+  Total Inverter Area:           4.90
+  Macro/Black Box Area:      0.000000
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:                29.859840
+  Design Area:              29.859840
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:            29
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: dagobah.ceid.upatras.gr
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.01
+  Logic Optimization:                  0.18
+  Mapping Optimization:                0.05
+  -----------------------------------------
+  Overall Compile Time:                2.31
+  Overall Compile Wall Clock Time:     2.55
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

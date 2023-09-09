@@ -1,0 +1,35 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : pipline_rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:36:34 2023
+****************************************
+
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.7  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ps
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+pipline_rca                            3.57e-03 9.09e-02 4.36e+03 9.44e-02 100.0
+1

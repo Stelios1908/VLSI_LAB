@@ -1,0 +1,83 @@
+ 
+****************************************
+Report : qor
+Design : accumulator
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:04:29 2023
+****************************************
+
+
+  Timing Path Group 'clk'
+  -----------------------------------
+  Levels of Logic:               6.00
+  Critical Path Length:        167.05
+  Critical Path Slack:           0.07
+  Critical Path Clk Period:    185.00
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          6
+  Hierarchical Port Count:         73
+  Leaf Cell Count:                183
+  Buf/Inv Cell Count:              50
+  Buf Cell Count:                   0
+  Inv Cell Count:                  50
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       152
+  Sequential Cell Count:           31
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:      180.558719
+  Noncombinational Area:   188.023679
+  Buf/Inv Area:             35.925120
+  Total Buffer Area:             0.00
+  Total Inverter Area:          35.93
+  Macro/Black Box Area:      0.000000
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:               368.582398
+  Design Area:             368.582398
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:           207
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: dagobah.ceid.upatras.gr
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.08
+  Logic Optimization:                  0.90
+  Mapping Optimization:                0.73
+  -----------------------------------------
+  Overall Compile Time:                3.71
+  Overall Compile Wall Clock Time:     3.98
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1

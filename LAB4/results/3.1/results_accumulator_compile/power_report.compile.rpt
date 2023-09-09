@@ -1,0 +1,50 @@
+Loading db file '/usr/local/eda/synLibs/asap7/7nm/db/asap7.db'
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : accumulator
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:04:30 2023
+****************************************
+
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.7  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ps
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+accumulator                            3.13e-02    0.250 1.85e+04    0.281 100.0
+  add_68 (accumulator_DW01_add_1)      8.03e-03 5.63e-03 4.19e+03 1.37e-02   4.9
+  genShiftReg[4].sr (shift_reg_width4_1)
+                                       2.89e-03 3.16e-02 2.10e+03 3.45e-02  12.3
+  genShiftReg[3].sr (shift_reg_width4_2)
+                                       2.94e-03 3.15e-02 1.96e+03 3.44e-02  12.2
+  genShiftReg[2].sr (shift_reg_width4_3)
+                                       3.46e-03 3.18e-02 2.12e+03 3.52e-02  12.5
+  genShiftReg[1].sr (shift_reg_width4_4)
+                                       2.28e-03 3.11e-02 1.78e+03 3.34e-02  11.9
+  genShiftReg[0].sr (shift_reg_width4_0)
+                                       2.30e-03 3.12e-02 1.78e+03 3.35e-02  11.9
+1

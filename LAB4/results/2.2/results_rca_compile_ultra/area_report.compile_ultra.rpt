@@ -1,0 +1,43 @@
+ 
+****************************************
+Report : area
+Design : pipline_rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:36:34 2023
+****************************************
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+Number of ports:                           15
+Number of nets:                            41
+Number of cells:                           31
+Number of combinational cells:             20
+Number of sequential cells:                11
+Number of macros/black boxes:               0
+Number of buf/inv:                         11
+Number of references:                       7
+
+Combinational area:                 25.194240
+Buf/Inv area:                        7.698240
+Noncombinational area:              66.718080
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                    91.912319
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+pipline_rca                         91.9123    100.0   25.1942    66.7181  0.0000  pipline_rca
+--------------------------------  ---------  -------  --------  ---------  ------  ---------
+Total                                                  25.1942    66.7181  0.0000
+
+1

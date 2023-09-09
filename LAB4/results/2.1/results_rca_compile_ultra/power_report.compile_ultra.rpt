@@ -1,0 +1,35 @@
+ 
+****************************************
+Report : power
+        -hier
+        -analysis_effort low
+Design : rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:35:12 2023
+****************************************
+
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 0.7  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ps
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+rca                                    3.90e-03 9.27e-02 5.10e+03 9.66e-02 100.0
+1

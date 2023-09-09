@@ -1,0 +1,49 @@
+ 
+****************************************
+Report : area
+Design : accumulator
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:04:29 2023
+****************************************
+
+Library(s) Used:
+
+    asap7 (File: /usr/local/eda/synLibs/asap7/7nm/db/asap7.db)
+
+Number of ports:                          105
+Number of nets:                           276
+Number of cells:                          189
+Number of combinational cells:            152
+Number of sequential cells:                31
+Number of macros/black boxes:               0
+Number of buf/inv:                         50
+Number of references:                      20
+
+Combinational area:                180.558719
+Buf/Inv area:                       35.925120
+Noncombinational area:             188.023679
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:                   368.582398
+Total area:                 undefined
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area          Local cell area
+                                  ------------------  --------------------------- 
+Hierarchical cell                 Absolute   Percent  Combi-    Noncombi-  Black-
+                                  Total      Total    national  national   boxes   Design
+--------------------------------  ---------  -------  --------  ---------  ------  ----------------------
+accumulator                        368.5824    100.0   22.8614    66.7181  0.0000  accumulator
+add_68                              70.6838     19.2   70.6838     0.0000  0.0000  accumulator_DW01_add_1
+genShiftReg[0].sr                   41.7571     11.3   17.4960    24.2611  0.0000  shift_reg_width4_0
+genShiftReg[1].sr                   40.3574     10.9   16.0963    24.2611  0.0000  shift_reg_width4_4
+genShiftReg[2].sr                   43.1568     11.7   18.8957    24.2611  0.0000  shift_reg_width4_3
+genShiftReg[3].sr                   40.5907     11.0   16.3296    24.2611  0.0000  shift_reg_width4_2
+genShiftReg[4].sr                   42.4570     11.5   18.1958    24.2611  0.0000  shift_reg_width4_1
+--------------------------------  ---------  -------  --------  ---------  ------  ----------------------
+Total                                                 180.5587   188.0237  0.0000
+
+1

@@ -1,0 +1,48 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : accumulator
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 14:02:26 2023
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+  Startpoint: clk_r_REG2_S2
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: clk_r_REG8_S1
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clk_r_REG2_S2/CLK (ASYNC_DFFHx1_ASAP7_75t_R)            0.00       0.00 r
+  clk_r_REG2_S2/QN (ASYNC_DFFHx1_ASAP7_75t_R)            48.86      48.86 f
+  U50/Y (AND2x2_ASAP7_75t_R)                             25.30      74.16 f
+  U47/Y (INVx1_ASAP7_75t_R)                              24.44      98.60 r
+  U83/Y (INVx1_ASAP7_75t_R)                              30.73     129.33 f
+  U114/Y (AOI222xp33_ASAP7_75t_R)                        32.97     162.30 r
+  clk_r_REG8_S1/D (ASYNC_DFFHx1_ASAP7_75t_R)              0.00     162.30 r
+  data arrival time                                                162.30
+
+  clock clk (rise edge)                                 185.00     185.00
+  clock network delay (ideal)                             0.00     185.00
+  clk_r_REG8_S1/CLK (ASYNC_DFFHx1_ASAP7_75t_R)            0.00     185.00 r
+  library setup time                                    -22.34     162.66
+  data required time                                               162.66
+  --------------------------------------------------------------------------
+  data required time                                               162.66
+  data arrival time                                               -162.30
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.37
+
+
+1

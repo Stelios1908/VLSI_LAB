@@ -1,0 +1,47 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : pipline_rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:36:34 2023
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+  Startpoint: clk_r_REG8_S1
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: clk_r_REG0_S1
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  clk_r_REG8_S1/CLK (ASYNC_DFFHx1_ASAP7_75t_R)            0.00       0.00 r
+  clk_r_REG8_S1/QN (ASYNC_DFFHx1_ASAP7_75t_R)            58.65      58.65 f
+  U30/Y (MAJIxp5_ASAP7_75t_R)                            29.48      88.14 r
+  U31/SN (FAx1_ASAP7_75t_R)                              37.37     125.51 f
+  U32/Y (INVxp33_ASAP7_75t_R)                            16.06     141.58 r
+  clk_r_REG0_S1/D (ASYNC_DFFHx1_ASAP7_75t_R)              0.00     141.58 r
+  data arrival time                                                141.58
+
+  clock clk (rise edge)                                 180.00     180.00
+  clock network delay (ideal)                             0.00     180.00
+  clk_r_REG0_S1/CLK (ASYNC_DFFHx1_ASAP7_75t_R)            0.00     180.00 r
+  library setup time                                    -17.96     162.04
+  data required time                                               162.04
+  --------------------------------------------------------------------------
+  data required time                                               162.04
+  data arrival time                                               -141.58
+  --------------------------------------------------------------------------
+  slack (MET)                                                       20.46
+
+
+1

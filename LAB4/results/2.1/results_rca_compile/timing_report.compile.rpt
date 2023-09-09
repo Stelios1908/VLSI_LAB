@@ -1,0 +1,62 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : rca
+Version: T-2022.03-SP5
+Date   : Sat Sep  9 13:30:45 2023
+****************************************
+
+Operating Conditions: PVT_0P7V_25C   Library: asap7
+Wire Load Model Mode: top
+
+  Startpoint: rega_regb_fas[1].reg_b/Q_reg
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: reg_sum[4].reg_sum/Q_reg
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clk (rise edge)                                   0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  rega_regb_fas[1].reg_b/Q_reg/CLK (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00       0.00 r
+  rega_regb_fas[1].reg_b/Q_reg/QN (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                         52.72      52.72 f
+  rega_regb_fas[1].reg_b/Q (myreg_10)                     0.00      52.72 f
+  rega_regb_fas[1].fa/b (fulladder_3)                     0.00      52.72 f
+  rega_regb_fas[1].fa/U5/Y (XNOR2xp5_ASAP7_75t_R)        33.47      86.18 f
+  rega_regb_fas[1].fa/U6/Y (AOI22x1_ASAP7_75t_R)         23.06     109.24 r
+  rega_regb_fas[1].fa/cout (fulladder_3)                  0.00     109.24 r
+  rega_regb_fas[2].fa/cin (fulladder_2)                   0.00     109.24 r
+  rega_regb_fas[2].fa/U5/Y (INVx2_ASAP7_75t_R)            9.75     119.00 f
+  rega_regb_fas[2].fa/U6/Y (AOI22x1_ASAP7_75t_R)         15.51     134.51 r
+  rega_regb_fas[2].fa/cout (fulladder_2)                  0.00     134.51 r
+  rega_regb_fas[3].fa/cin (fulladder_1)                   0.00     134.51 r
+  rega_regb_fas[3].fa/U5/Y (OA22x2_ASAP7_75t_R)          25.40     159.91 r
+  rega_regb_fas[3].fa/cout (fulladder_1)                  0.00     159.91 r
+  reg_sum[4].reg_sum/D (myreg_1)                          0.00     159.91 r
+  reg_sum[4].reg_sum/U4/Y (INVx1_ASAP7_75t_R)             6.17     166.08 f
+  reg_sum[4].reg_sum/Q_reg/D (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00     166.08 f
+  data arrival time                                                166.08
+
+  clock clk (rise edge)                                 180.00     180.00
+  clock network delay (ideal)                             0.00     180.00
+  reg_sum[4].reg_sum/Q_reg/CLK (ASYNC_DFFHx1_ASAP7_75t_R)
+                                                          0.00     180.00 r
+  library setup time                                    -13.48     166.52
+  data required time                                               166.52
+  --------------------------------------------------------------------------
+  data required time                                               166.52
+  data arrival time                                               -166.08
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.44
+
+
+1
