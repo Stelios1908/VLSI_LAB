@@ -7,18 +7,19 @@ module neuron #(
     input  load_params,
     input  signed [m*k-1:0]activation,
     input  wire[m*n-1:0]weigth,
-    input  wire [b-1:0]bias,
-    output  [n+k+$clog2(m):0] out
+    input  wire [b:0]bias,
+    output signed [n+k+$clog2(m)+1:0] out
 );
 
-wire  [n+k+$clog2(m)-1:0] sums[m:0];
+wire  [n+k+$clog2(m)+1:0] sums[m:0];
 
 
 reg signed[m*n-1:0] weigth_reg;
-reg signed[b-1:0]bias_reg;
+reg signed[b:0]bias_reg;
 
 //edo kanoyme ReLU an einai <0 perno exodo 0 alios to apotelesma
-assign out = sums[m]+bias_reg;
+assign out = ($signed(sums[m])+$signed(bias_reg)<0) ? 0 :
+              $signed(sums[m])+$signed(bias_reg);
 assign sums[0] =0;
       
 genvar gi;
@@ -43,4 +44,5 @@ always @(load_params ) begin
       end
   end
 endmodule
+
 
